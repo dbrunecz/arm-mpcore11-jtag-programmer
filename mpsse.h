@@ -1,3 +1,5 @@
+/* Copyright (C) 2020 David Brunecz. Subject to GPL 2.0 */
+
 #ifndef _MPSSE_H_
 #define _MPSSE_H_
 /******************************************************************************/
