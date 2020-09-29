@@ -4,20 +4,20 @@
 #include <time.h>
 #include <sys/time.h>
 
-typedef int8_t      s8;
-typedef int16_t     s16;
-typedef int32_t     s32;
-typedef int64_t     s64;
+typedef int8_t s8;
+typedef int16_t s16;
+typedef int32_t s32;
+typedef int64_t s64;
 
-typedef uint8_t     u8;
-typedef uint16_t    u16;
-typedef uint32_t    u32;
-typedef uint64_t    u64;
+typedef uint8_t u8;
+typedef uint16_t u16;
+typedef uint32_t u32;
+typedef uint64_t u64;
 
-static inline char * _bn(char *s)
+static inline char *_bn(char *s)
 {
-    char *p = strrchr(s, '/');
-    return p ? &p[1] : s;
+	char *p = strrchr(s, '/');
+	return p ? &p[1] : s;
 }
 
 #define RESET_CLR         "0"
@@ -44,7 +44,7 @@ static inline char * _bn(char *s)
 #define CYAN_TXT()         textattr(CYAN)
 static inline void textattr(char *s)
 {
-    printf("\033[%sm", s);
+	printf("\033[%sm", s);
 }
 
 #define DBGFMT              "%s:%d %s() "
@@ -67,16 +67,16 @@ static inline void textattr(char *s)
 static inline uint64_t tickcount_us(void)
 {
 #if 1
-    struct timespec t;
+	struct timespec t;
 
-    if (clock_gettime(CLOCK_MONOTONIC_RAW, &t))
-        return 0;
-    return t.tv_sec * 1000000 + (t.tv_nsec/1000);
+	if (clock_gettime(CLOCK_MONOTONIC_RAW, &t))
+		return 0;
+	return t.tv_sec * 1000000 + (t.tv_nsec / 1000);
 #else
-    struct timeval tv;
+	struct timeval tv;
 
-    if (!gettimeofday(&tv, NULL))
-        return 0;
-    return tv.tv_sec * 1000000 + tv.tv_usec;
+	if (!gettimeofday(&tv, NULL))
+		return 0;
+	return tv.tv_sec * 1000000 + tv.tv_usec;
 #endif
 }
